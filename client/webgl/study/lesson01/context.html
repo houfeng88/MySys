@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>context</title>
+		<style type="teext/css">
+			canvas {border:2px dotted:blue;}
+		</style>
+		<script>
+			var gl=null;
+			function getGLContext() {
+			  var canvas = document.getElementById("canvasid");
+			  if(canvas == null){
+			  	alert("canvas error");
+			  	return;
+			  }
+			 var names = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
+			 for (var i = 0; i < names.length; ++i) {
+                try {
+                    gl = canvas.getContext(names[i]);
+                } 
+                catch(e) {}
+                if (gl) break;
+            }
+
+			if (gl == null){
+				alert("WebGL is not available");
+			}
+			else{
+				alert(" You got a WebGL context");
+			}
+			  
+			}
+		</script>
+	</head>
+	<body onload="getGLContext()">
+		<canvas id="canvasid" width="800" height="600">
+			
+		</canvas>
+	</body>
+</html>
